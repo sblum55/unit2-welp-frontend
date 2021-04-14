@@ -1,0 +1,61 @@
+* {
+    margin: 0px;
+}
+
+.homepageHeader {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    background-color: lightskyblue;
+}
+
+.gitBizHeader {
+    width: 50%;
+}
+
+.gitBiz {
+    text-align: left;
+    font-size: 100px;
+}
+
+.headerLinks {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 50%;
+    align-items: center;
+}
+
+.hLink {
+    margin-right: 15px;
+    width: 25%;
+    height: 50%;
+    background-color: black;
+    color: white;
+}
+
+.hLink:hover {
+    cursor: pointer;
+}
+
+.homepageAllbusinessTitle {
+    margin-top: 35px;
+    text-align: center;
+}
+
+.homepageTeaser {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+}
+
+.homepageTeaserBusiness {
+    display: flex;
+    justify-content: center;
+    border: 3px solid black;
+    width: 150px;
+    height: 150px;
+    margin: 0 20px;
+}
+
