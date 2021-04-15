@@ -184,6 +184,9 @@ const allBizDOM = async (response) => {
 const singleBusiness = async (response) => {
 
     //Business Info
+    const bizMiddleContainer = document.createElement('div')
+    bizMiddleContainer.classList.add('bizMiddleContainer')
+    
     let bizTitleContainer = document.createElement('div')
     bizTitleContainer.classList.add('bizTitleContainer')
     businessContainer.appendChild(bizTitleContainer)
@@ -205,7 +208,7 @@ const singleBusiness = async (response) => {
 
     let bizImageContainer = document.createElement('div')
     bizImageContainer.classList.add('bizImageContainer')
-    businessContainer.appendChild(bizImageContainer)
+    bizMiddleContainer.appendChild(bizImageContainer)
 
     let bizImage = document.createElement('img')
     bizImage.classList.add('bizImage')
@@ -214,7 +217,7 @@ const singleBusiness = async (response) => {
 
     let bizDetailContainer = document.createElement('div')
     bizDetailContainer.classList.add('bizDetailContainer')
-    businessContainer.appendChild(bizDetailContainer)
+    bizMiddleContainer.appendChild(bizDetailContainer)
 
     let bizAddress = document.createElement('p')
     bizAddress.classList.add('bizAddress')
@@ -231,6 +234,7 @@ const singleBusiness = async (response) => {
     bizDescription.innerText = response.description
     bizDetailContainer.appendChild(bizDescription)
 
+    businessContainer.appendChild(bizMiddleContainer)
     if(localStorage.getItem('userId')) {
         let reviewBtn = document.createElement('button')
         reviewBtn.classList.add('reviewBtn')
