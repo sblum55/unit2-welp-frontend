@@ -1,5 +1,3 @@
-const { report } = require("../unit2-welp-backend/routers/userRoutes");
-
 console.log("Hello there");
 
 const url = 'http://localhost:3001/'
@@ -19,7 +17,7 @@ const bizImageInput = document.querySelector('.addBizImage')
 const bizTypeInput = document.querySelector('.addBizType')
 const buttonTestGetAll = document.querySelector('#testGetAll')
 const homePageDropZone = document.querySelector('.homepageDropZone')
-const businessContainer = document.querySelect('.businessContainer')
+const businessContainer = document.querySelector('.businessContainer')
 
 let allBiz = []
 
@@ -157,6 +155,7 @@ const allBizDOM = async (response) => {
                 console.log(res)
                 // callback functions for changing the page
                 singleBusiness(allBiz[biz])
+                homepage.classList.add('hidden')
             } catch (error) {    
             }
         })
@@ -194,6 +193,15 @@ const singleBusiness = async (response) => {
     bizTitle.innerText = response.name
     bizTitleContainer.appendChild(bizTitle)
     
+    const bizOwner = await axios.post(`${url}users/getUser`, {
+        userId: response.userId
+    })
+    console.log(bizOwner);
+
+    let bizOwnerText = document.createElement('h3')
+    bizOwnerText.innerText = `Owner: ${bizOwner.data.user.name}`
+    bizOwnerText.classList.add('bizOwnerName')
+    bizTitleContainer.appendChild(bizOwnerText)
 
     let bizImageContainer = document.createElement('div')
     bizImageContainer.classList.add('bizImageContainer')
@@ -210,7 +218,7 @@ const singleBusiness = async (response) => {
 
     let bizAddress = document.createElement('p')
     bizAddress.classList.add('bizAddress')
-    bizAddress.innerText = response,address
+    bizAddress.innerText = response.address
     bizDetailContainer.appendChild(bizAddress)
 
     let bizType = document.createElement('p')
@@ -223,26 +231,68 @@ const singleBusiness = async (response) => {
     bizDescription.innerText = response.description
     bizDetailContainer.appendChild(bizDescription)
 
+    if(localStorage.getItem('userId')) {
+        let reviewBtn = document.createElement('button')
+        reviewBtn.classList.add('reviewBtn')
+        reviewBtn.innerText = 'Add Review'
+        businessContainer.appendChild(reviewBtn)
 
+        reviewBtn.addEventListener('click', () => {
+            triggerModal('reviewModal', 4)
+        })
+
+        document.querySelector('.submitReviewBtn').addEventListener('click', async () => {
+            const rating = document.querySelector('.reviewRatingInput').value
+            const headline = document.querySelector('.reviewHeadline').value
+            const review = document.querySelector('.reviewText').value
+
+            const reviewPost = await axios.post(`${url}users/${localStorage.getItem('userId')}/addReview`, {
+                id: response.id,
+                rating: rating,
+                headline: headline,
+                content: review
+            })
+            console.log(reviewPost);
+        })
+    }
+
+    const res = await axios.post(`${url}business/reviews`, {
+        businessId: response.id,
+        userId: localStorage.getItem('userId')
+    })
+    console.log(res);
     //Review Info
-    let bizReviewContainer = document.createElement('div')
-    bizReviewContainer.classList.add('bizReviewContainer')
-    businessContainer.appendChild(bizReviewContainer)
+    res.data.slice().reverse().forEach(async element => {
+        let bizReviewContainer = document.createElement('div')
+        bizReviewContainer.classList.add('bizReviewContainer')
+        businessContainer.appendChild(bizReviewContainer)
+        
+        const user = await axios.post(`${url}users/getUser`, {
+            userId: element.userId
+        })
+        console.log(element.userId);
 
-    let userName = document.createElement('p')
-    userName.classList.add('userName')
-    userName.innerText = response.name
-    bizReviewContainer.appendChild(userName)
+        console.log(user);
+        let userName = document.createElement('p')
+        userName.classList.add('userName')
+        userName.innerText = user.data.user.name
+        bizReviewContainer.appendChild(userName)
 
-    let headline = document.createElement('p')
-    headline.classList.add('headline')
-    headline.innerText = response.headline
-    bizReviewContainer.appendChild(headline)
-
-    let content = document.createElement('p')
-    content.classList.add('content')
-    content.innerText = response.content
-    bizReviewContainer.appendChild(content)
+        let rating = document.createElement('p')
+        rating.classList.add('rating')
+        rating.innerText = element.rating
+        bizReviewContainer.appendChild(rating)
+    
+        let headline = document.createElement('p')
+        headline.classList.add('headline')
+        headline.innerText = element.headline
+        bizReviewContainer.appendChild(headline)
+    
+        let content = document.createElement('p')
+        content.classList.add('content')
+        content.innerText = element.content
+        bizReviewContainer.appendChild(content)
+    })
 
 }
 
@@ -284,6 +334,7 @@ if (localStorage.getItem('userId')) {
     document.querySelector('.signUp').classList.add('hidden')
     document.querySelector('.addBiz').classList.remove('hidden')
     document.querySelector('.signOut').classList.remove('hidden')
+    // document.querySelector('.submit')
     homeAllBiz()
 } else {
     document.querySelector('.login').classList.remove('hidden')

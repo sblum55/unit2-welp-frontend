@@ -326,6 +326,28 @@
     object-fit: cover;
 }
 
+.reviewModal {
+    position: fixed; /* Stay in place */
+    display: none;
+    left: 0;
+    z-index: 5; /* Sit on top */
+    width: 100%; /* Full width */
+    top: 0;
+    overflow: auto; /* Enable scroll if needed */
+    height: 100%; /* Full height */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.reviewModalContent {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%; /* Modal Size */
+    border-radius: 10%;
+    height: 50%;
+    padding: 0%;
+}
 
 
 

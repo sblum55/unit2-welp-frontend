@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='./style.css' rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Pacifico&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" defer></script>
     <script src="main.js" defer></script>
@@ -93,5 +94,16 @@
         </div>
     </div>
     <!------------------------>
+    <!---- Leave Review Modal -->
+    <div class='reviewModal'>
+        <div class='reviewModalContent'>
+            <span class='close'>&times;</span>
+            <h1 class='reviewTitle'>Leave Review</h1>
+            <input class='reviewRatingInput' type='number' placeholder="Rating">
+            <input class='reviewHeadline' type='text' placeholder="Headline">
+            <textarea class='reviewText' cols="50" rows="4"></textarea>
+            <button class='submitReviewBtn'>SUBMIT</button>
+        </div>
+    </div>
 </body>
 </html>
