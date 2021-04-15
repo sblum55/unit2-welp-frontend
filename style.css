@@ -16,6 +16,13 @@
 .gitBiz {
     text-align: left;
     font-size: 100px;
+    font-family: 'Pacifico', cursive;
+    margin-top: -30px;
+    margin-bottom: 30px;
+}
+
+.gitBiz:hover {
+    cursor: pointer;
 }
 
 .headerLinks {
@@ -28,7 +35,7 @@
 .hLink {
     margin-right: 15px;
     width: 25%;
-    height: 50%;
+    height: 34%;
     background-color: black;
     color: white;
 }
@@ -59,3 +66,196 @@
     margin: 0 20px;
 }
 
+/* LOGIN / SIGNUP MODAL */
+/* MODAL */
+.signUpModal {
+    display: none;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.loginModal {
+    display: none;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.loginSignup {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%; /* Modal Size */
+    border-radius: 5%;
+    height: 40%;
+    padding: 0%;
+}
+
+/* Modal X */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.signUpHeader {
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+.loginHeader {
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+.signUpForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sUI {
+    margin-top: 10px;
+    width: 80%;
+    height: 40px;
+    font-size: large;
+}
+
+.sUI:focus {
+    outline-width: thick;
+    outline-color: lightskyblue;
+}
+
+.signUpBtn {
+    margin-top: 30px;
+    width: 25%;
+    height: 40px;
+    background-color: lightskyblue;
+    font-size: large;
+}
+
+.signUpBtn:hover {
+    color: lightskyblue;
+    background-color: white;
+    border-color: lightskyblue;
+    cursor: pointer;
+}
+
+.signUpBtn:focus {
+    outline: none;
+}
+
+.loginBtn {
+    margin-top: 30px;
+    width: 25%;
+    height: 40px;
+    background-color: lightskyblue;
+    font-size: large;
+}
+
+.loginBtn:hover {
+    color: lightskyblue;
+    background-color: white;
+    border-color: lightskyblue;
+    cursor: pointer;
+}
+
+.loginBtn:focus {
+    outline: none;
+}
+/* SIGNUP / LOGIN MODAL END*/
+
+.addBizModal {
+    position: fixed; /* Stay in place */
+    display: none;
+    left: 0;
+    z-index: 1; /* Sit on top */
+    width: 100%; /* Full width */
+    top: 0;
+    overflow: auto; /* Enable scroll if needed */
+    height: 100%; /* Full height */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.addBizModalContent {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%; /* Modal Size */
+    border-radius: 10%;
+    height: 50%;
+    padding: 0%;
+}
+
+.addBizHeader {
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+.addBizForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.addBizFields {
+    margin-bottom: 15px;
+    width: 80%;
+    height: 40px;
+    font-size: large;
+}
+
+.addBizFields:focus {
+    outline-color: lightskyblue;
+    outline-width: thick;
+}
+
+.addBizSubmitBtn {
+    margin-top: 30px;
+    width: 25%;
+    height: 40px;
+    background-color: lightskyblue;
+    font-size: large;
+}
+
+.addBizSubmitBtn:hover {
+    color: lightskyblue;
+    background-color: white;
+    border-color: lightskyblue;
+    cursor: pointer;
+}
+
+.addBizSubmitBtn:focus {
+    outline: none;
+}
+
+.hidden {
+    display: none;
+}
