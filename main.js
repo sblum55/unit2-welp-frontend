@@ -9,7 +9,25 @@ const signUpForm = document.querySelector('.signUpForm')
 const signUpButton = document.querySelector('.signUp')
 const signOut = document.querySelector('.signOut')
 const addBizButton = document.querySelector('.addBiz')
+const bizForm = document.querySelector('.addBizForm')
+const bizNameInput = document.querySelector('.addBizName')
+const bizAddressInput = document.querySelector('.addBizAddress')
+const bizDescriptionInput = document.querySelector('.addBizDescription')
+const bizImageInput = document.querySelector('.addBizImage')
+const bizTypeInput = document.querySelector('.addBizType')
+const buttonTestGetAll = document.querySelector('#testGetAll')
+const homePageDropZone = document.querySelector('.homepageDropZone')
 
+let allBiz = []
+
+
+// Reusable Functions
+
+const clearDOM = (area) => {
+    while (area.firstChild) {
+        area.firstChild.remove()
+    }  
+}
 
 // Sign Up Form
 document.querySelector('.signUp').addEventListener('click', () => {
@@ -33,6 +51,7 @@ signUpForm.addEventListener('submit', async (event) => {
 
         const userId = response.data.user.id
         localStorage.setItem('userId', userId)
+        location.reload()
 
     }catch (error) {
         alert('user already exist')
@@ -68,6 +87,101 @@ loginForm.addEventListener('submit', async (event) => {
         alert('login failed')
     }
 })
+
+// Add business
+bizForm.addEventListener('submit', async (event) => {
+    event.preventDefault()
+
+    const name = bizNameInput.value
+    const address = bizAddressInput.value
+    const description = bizDescriptionInput.value
+    const image = bizImageInput.value
+    const type = bizTypeInput.value
+    const userId = localStorage.getItem('userId')
+
+    try {
+        const response = await axios.post(`${url}business/new`, {
+            name: name,
+            address: address,
+            description: description,
+            image: image,
+            type: type,
+            userId: userId
+        })
+
+        console.log(response)
+        location.reload()
+
+    } catch (error) {
+        alert('Add business failed')
+    }
+
+})
+
+
+// Home page - get all businesses
+buttonTestGetAll.addEventListener('click', () => {
+    homeAllBiz()
+})
+
+
+
+const homeAllBiz = async () => {
+    try {
+        const response = await axios.get(`${url}business/all`)
+
+        console.log(response)
+
+        allBizDOM(response)
+
+    } catch (error) {
+        alert('No good')
+    }
+}
+
+const allBizDOM = async (response) => {
+    clearDOM(homePageDropZone)
+    allBiz = response.data
+
+    for ( let biz in allBiz ) {
+        let bizComponent = document.createElement('div')
+        bizComponent.classList.add('biz-component')
+        bizComponent.addEventListener('click', async () =>{
+            try {
+                const res = await axios.post(`${url}business`, {
+                    businessId: `${allBiz[biz].id}`
+                })
+                console.log(res)
+                // callback functions for changing the page
+
+            } catch (error) {    
+            }
+        })
+        homePageDropZone.appendChild(bizComponent)
+
+        let bizTitle = document.createElement('div')
+        bizTitle.classList.add('biz-title')
+        bizTitle.innerText = `${allBiz[biz].name}`
+        bizComponent.appendChild(bizTitle)
+
+        let bizType = document.createElement('div')
+        bizType.classList.add('biz-type')
+        bizType.innerText = `${allBiz[biz].type}`
+        bizComponent.appendChild(bizType)
+
+        let bizImage = document.createElement('img')
+        bizImage.src = `${allBiz[biz].image}`
+        bizImage.classList.add('biz-image')
+        bizComponent.appendChild(bizImage)
+
+    }
+
+
+}
+
+
+
+
 
 signOut.addEventListener('click', () => {
     console.log('you logged out');
@@ -106,9 +220,11 @@ if (localStorage.getItem('userId')) {
     document.querySelector('.signUp').classList.add('hidden')
     document.querySelector('.addBiz').classList.remove('hidden')
     document.querySelector('.signOut').classList.remove('hidden')
+    homeAllBiz()
 } else {
     document.querySelector('.login').classList.remove('hidden')
     document.querySelector('.signUp').classList.remove('hidden')
     document.querySelector('.addBiz').classList.add('hidden')
     document.querySelector('.signOut').classList.add('hidden')
+    homeAllBiz()
 }

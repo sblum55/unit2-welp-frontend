@@ -27,14 +27,18 @@
     <div class="homepage">
         <div class='homepageContainer'>
             <h1 class='homepageAllbusinessTitle'>All businesses</h1>
+            <button id="testGetAll">Get All Biz</button>
             <!-- Colleciton of random businesses -->
-            <div class="homepageTeaser">
+            <div class="homepageDropZone">
                 <!-- each business can replace this div (they are just for visual aid)-->
-                <div class='homepageTeaserBusiness'></div>
-                <div class='homepageTeaserBusiness'></div>
-                <div class='homepageTeaserBusiness'></div>
+
                 <!---------------------------------------------------------------------->
             </div>
+        </div>
+    </div>    
+    <div class="businesspage">
+        <div class="businessContainer">
+
         </div>
     </div>
     <!-- Signup Modal-->
@@ -71,8 +75,9 @@
             <h1 class='addBizHeader'>Add Business</h1>
             <form class='addBizForm' id='addBizFormID'>
                 <input class='addBizName addBizFields' type='text' placeholder="Name of Business" required>
-                <input class='addBizEmail addBizFields' type="text" placeholder="Address" required>
+                <input class='addBizAddress addBizFields' type="text" placeholder="Address" required>
                 <input class='addBizDescription addBizFields' type='text' placeholder="Description" required>
+                <input class='addBizImage addBizFields' type='url' placeholder="Image" required>
                 <select class='addBizType addBizFields' required>
                     <option value='' disabled selected>Type of business</option>
                     <option value='restaurant'>Restaurant</option>

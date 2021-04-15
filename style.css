@@ -44,6 +44,13 @@
     cursor: pointer;
 }
 
+.homepage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+}
+
 .homepageAllbusinessTitle {
     margin-top: 35px;
     text-align: center;
@@ -71,7 +78,7 @@
 .signUpModal {
     display: none;
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 5; /* Sit on top */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -83,7 +90,7 @@
 .loginModal {
     display: none;
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 5; /* Sit on top */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -193,7 +200,7 @@
     position: fixed; /* Stay in place */
     display: none;
     left: 0;
-    z-index: 1; /* Sit on top */
+    z-index: 5; /* Sit on top */
     width: 100%; /* Full width */
     top: 0;
     overflow: auto; /* Enable scroll if needed */
@@ -255,6 +262,52 @@
 .addBizSubmitBtn:focus {
     outline: none;
 }
+
+.homePageDropZone {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 70%;
+    border: 1px solid black;
+}
+
+.biz-component {
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    width: 300px;
+    position: relative;
+}
+
+.biz-title {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    font-size: 1.2em;
+}
+
+.biz-type {
+    position: absolute;
+    z-index: 2;
+    top: 0%;
+    font-size: 1.0em;
+}
+
+.biz-image {
+    height: 300px;
+    width: 300px;
+    object-fit: cover;
+}
+
+
+
+
+
+
+
 
 .hidden {
     display: none;
