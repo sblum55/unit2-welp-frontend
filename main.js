@@ -9,6 +9,13 @@ const signUpForm = document.querySelector('.signUpForm')
 const signUpButton = document.querySelector('.signUp')
 const signOut = document.querySelector('.signOut')
 const addBizButton = document.querySelector('.addBiz')
+const bizForm = document.querySelector('.addBizForm')
+const bizNameInput = document.querySelector('.addBizName')
+const bizAddressInput = document.querySelector('.addBizAddress')
+const bizDescriptionInput = document.querySelector('.addBizDescription')
+const bizImageInput = document.querySelector('.addBizImage')
+const bizTypeInput = document.querySelector('.addBizType')
+
 
 
 // Sign Up Form
@@ -33,6 +40,7 @@ signUpForm.addEventListener('submit', async (event) => {
 
         const userId = response.data.user.id
         localStorage.setItem('userId', userId)
+        location.reload()
 
     }catch (error) {
         alert('user already exist')
@@ -67,6 +75,41 @@ loginForm.addEventListener('submit', async (event) => {
         alert('login failed')
     }
 })
+
+// Add business
+bizForm.addEventListener('submit', async (event) => {
+    event.preventDefault()
+
+    const name = bizNameInput.value
+    const address = bizAddressInput.value
+    const description = bizDescriptionInput.value
+    const image = bizImageInput.value
+    const type = bizTypeInput.value
+    const userId = localStorage.getItem('userId')
+
+    try {
+        const response = await axios.post(`${url}business/new`, {
+            name: name,
+            address: address,
+            description: description,
+            image: image,
+            type: type,
+            userId: userId
+        })
+
+        console.log(response)
+
+    } catch (error) {
+        alert('Add business failed')
+    }
+
+
+
+
+})
+
+
+
 
 signOut.addEventListener('click', () => {
     console.log('you logged out');
