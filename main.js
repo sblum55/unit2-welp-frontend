@@ -1,3 +1,5 @@
+const { report } = require("../unit2-welp-backend/routers/userRoutes");
+
 console.log("Hello there");
 
 const url = 'http://localhost:3001/'
@@ -17,6 +19,7 @@ const bizImageInput = document.querySelector('.addBizImage')
 const bizTypeInput = document.querySelector('.addBizType')
 const buttonTestGetAll = document.querySelector('#testGetAll')
 const homePageDropZone = document.querySelector('.homepageDropZone')
+const businessContainer = document.querySelect('.businessContainer')
 
 let allBiz = []
 
@@ -153,13 +156,13 @@ const allBizDOM = async (response) => {
                 })
                 console.log(res)
                 // callback functions for changing the page
-
+                singleBusiness(allBiz[biz])
             } catch (error) {    
             }
         })
         homePageDropZone.appendChild(bizComponent)
 
-        let bizTitle = document.createElement('div')
+        let bizTitle = document.createElement('h2')
         bizTitle.classList.add('biz-title')
         bizTitle.innerText = `${allBiz[biz].name}`
         bizComponent.appendChild(bizTitle)
@@ -179,8 +182,69 @@ const allBizDOM = async (response) => {
 
 }
 
+const singleBusiness = async (response) => {
+
+    //Business Info
+    let bizTitleContainer = document.createElement('div')
+    bizTitleContainer.classList.add('bizTitleContainer')
+    businessContainer.appendChild(bizTitleContainer)
+
+    let bizTitle = document.createElement('h1')
+    bizTitle.classList.add('bizTitle')
+    bizTitle.innerText = response.name
+    bizTitleContainer.appendChild(bizTitle)
+    
+
+    let bizImageContainer = document.createElement('div')
+    bizImageContainer.classList.add('bizImageContainer')
+    businessContainer.appendChild(bizImageContainer)
+
+    let bizImage = document.createElement('img')
+    bizImage.classList.add('bizImage')
+    bizImage.src = response.image
+    bizImageContainer.appendChild(bizImage)
+
+    let bizDetailContainer = document.createElement('div')
+    bizDetailContainer.classList.add('bizDetailContainer')
+    businessContainer.appendChild(bizDetailContainer)
+
+    let bizAddress = document.createElement('p')
+    bizAddress.classList.add('bizAddress')
+    bizAddress.innerText = response,address
+    bizDetailContainer.appendChild(bizAddress)
+
+    let bizType = document.createElement('p')
+    bizType.classList.add('bizType')
+    bizType.innerText = response.type
+    bizDetailContainer.appendChild(bizType)
+
+    let bizDescription = document.createElement('p')
+    bizDescription.classList.add('bizDescription')
+    bizDescription.innerText = response.description
+    bizDetailContainer.appendChild(bizDescription)
 
 
+    //Review Info
+    let bizReviewContainer = document.createElement('div')
+    bizReviewContainer.classList.add('bizReviewContainer')
+    businessContainer.appendChild(bizReviewContainer)
+
+    let userName = document.createElement('p')
+    userName.classList.add('userName')
+    userName.innerText = response.name
+    bizReviewContainer.appendChild(userName)
+
+    let headline = document.createElement('p')
+    headline.classList.add('headline')
+    headline.innerText = response.headline
+    bizReviewContainer.appendChild(headline)
+
+    let content = document.createElement('p')
+    content.classList.add('content')
+    content.innerText = response.content
+    bizReviewContainer.appendChild(content)
+
+}
 
 
 signOut.addEventListener('click', () => {

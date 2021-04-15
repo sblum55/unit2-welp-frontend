@@ -1,22 +1,25 @@
 * {
     margin: 0px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .homepageHeader {
     display: flex;
     width: 100%;
     flex-direction: row;
-    background-color: lightskyblue;
+    background-color: #33658a;
 }
 
 .homepageContainer {
     display: flex;
-    border: 10px solid green;
+    border: 10px solid #8db580;
     flex: row;
 }
 
 .gitBizHeader {
     width: 50%;
+    color: white;
+    padding-left: 5px;
 }
 
 .gitBiz {
@@ -44,6 +47,8 @@
     height: 34%;
     background-color: black;
     color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1em;
 }
 
 .hLink:hover {
@@ -261,7 +266,7 @@
 .addBizSubmitBtn:hover {
     color: lightskyblue;
     background-color: white;
-    border-color: lightskyblue;
+    border-color: #87cefa;
     cursor: pointer;
 }
 
@@ -279,9 +284,10 @@
 }
 
 .biz-component {
-    border: 1px solid red;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: row;
+    justify-content: center;
     height: 300px;
     width: 300px;
     position: relative;
@@ -289,10 +295,17 @@
 }
 
 .biz-title {
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     z-index: 2;
-    top: 50%;
+    top: auto;
     font-size: 1.2em;
+    color: white;
 }
 
 .biz-type {
@@ -300,6 +313,11 @@
     z-index: 2;
     top: 0%;
     font-size: 1.0em;
+    background-color: #4b4a67;
+    color: white;
+    width: 100%;
+    height: 10%;
+    text-align: center;
 }
 
 .biz-image {
