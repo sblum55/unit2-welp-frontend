@@ -349,7 +349,53 @@
     padding: 0%;
 }
 
+.bizMiddleContainer {
+    display: flex;
+    flex-direction: row;
+}
+.bizImageContainer {
+    width: 50%;
+}
 
+.bizDetailContainer {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.bizAddress {
+    margin-bottom: 30px;
+    font-size: xx-large;
+}
+
+.bizTitleContainer {
+    text-align: center;
+}
+
+.bizTitle {
+    font-size: 80px;
+}
+
+.bizType {
+    margin-bottom: 30px;
+    font-size: xx-large;
+}
+
+.bizDescription {
+    margin-bottom: 30px;
+    font-size: xx-large;
+}
+
+.bizReviewContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+    background-color: rgb(192, 178, 161);
+}
 
 
 
