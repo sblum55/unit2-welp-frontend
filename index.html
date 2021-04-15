@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='./style.css' rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Pacifico&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" defer></script>
     <script src="main.js" defer></script>
     <title>GitBiz</title>
@@ -16,14 +17,16 @@
             <h1 class='gitBiz'>GitBiz</h1>
         </div>
         <div class='headerLinks'>
-            <button class='login hLink'>LOGIN</button>
+            <button class='login hLink hidden'>LOGIN</button>
             <button class='signUp hLink'>SIGN-UP</button>
+            <button class='addBiz hLink'>ADD BUSINESS</button>
+            <button class='signOut hLink'>SIGN OUT</button>
         </div>
     </div>
     <!----------------------------->
     <div class="homepage">
         <div class='homepageContainer'>
-            <h1 class='homepageAllbusinessTitle'>All buisnesses</h1>
+            <h1 class='homepageAllbusinessTitle'>All businesses</h1>
             <!-- Colleciton of random businesses -->
             <div class="homepageTeaser">
                 <!-- each business can replace this div (they are just for visual aid)-->
@@ -34,6 +37,57 @@
             </div>
         </div>
     </div>
-    
+    <!-- Signup Modal-->
+    <div class='signUpModal'>
+        <div class='signUpModalContent loginSignup'>
+            <span class='close'>&times;</span>
+            <h1 class='signUpHeader'>Sign Up</h1>
+            <form class='signUpForm'>
+                <input class="signUpName sUI" type="text" placeholder="Name" required>
+                <input class="signUpEmail sUI" type="email" placeholder="Email" required>
+                <input class="signUpPassword sUI" type="password" placeholder="Password" required>
+                <input class="signUpBtn" type="submit" value="Sign-Up">
+            </form>
+        </div>
+    </div>
+    <!------------------>
+    <!-- Login Modal-->
+    <div class='loginModal'>
+        <div class='loginModalContent loginSignup'>
+            <span class='close'>&times;</span>
+            <h1 class='loginHeader'>Login</h1>
+            <form class='loginForm'>
+                <input class="loginName sUI" type="text" placeholder="Name" required>
+                <input class="loginEmail sUI" type="email" placeholder="Email" required>
+                <input class="loginPassword sUI" type="password" placeholder="Password" required>
+                <input class="loginBtn" type="submit" value="Login">
+            </form>
+        </div>
+    </div>
+    <!---------------->
+    <!-- Add business modal-->
+    <div class="addBizModal">
+        <div class='addBizModalContent'>
+            <span class='close'>&times;</span>
+            <h1 class='addBizHeader'>Add Business</h1>
+            <form class='addBizForm' id='addBizFormID'>
+                <input class='addBizName addBizFields' type='text' placeholder="Name of Business" required>
+                <input class='addBizEmail addBizFields' type="text" placeholder="Address" required>
+                <input class='addBizDescription addBizFields' type='text' placeholder="Description" required>
+                <select class='addBizType addBizFields' required>
+                    <option value='' disabled selected>Type of business</option>
+                    <option value='restaurant'>Restaurant</option>
+                    <option value='construction'>Construction</option>
+                    <option value='tech'>Tech</option>
+                    <option value='hvac'>HVAC</option>
+                    <option value='manufacturing'>Manufacturing</option>
+                    <option value='service'>Service Business</option>
+                    <option value='merchandising'>Merchandising</option>
+                </select>
+                <input class='addBizSubmitBtn' type='submit' value="SUBMIT">
+            </form>
+        </div>
+    </div>
+    <!------------------------>
 </body>
 </html>
