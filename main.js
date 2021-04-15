@@ -74,6 +74,7 @@ loginForm.addEventListener('submit', async (event) => {
             password: password
         })
 
+        //LOGIN HAS TO HAVE SUCCEDDED SO RUN THIS
         const userId = response.data.user.id
         localStorage.setItem('userId', userId)
 
@@ -213,6 +214,7 @@ const triggerModal = (querySelect, closePos) => {
     }
 }
 
+// IF USER RETURNS TO PAGE AND DIDNT LOGOUT BEFORE THEY LEFT
 if (localStorage.getItem('userId')) {
     document.querySelector('.login').classList.add('hidden')
     document.querySelector('.signUp').classList.add('hidden')

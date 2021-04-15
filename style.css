@@ -9,6 +9,12 @@
     background-color: lightskyblue;
 }
 
+.homepageContainer {
+    display: flex;
+    border: 10px solid green;
+    flex: row;
+}
+
 .gitBizHeader {
     width: 50%;
 }
@@ -263,23 +269,23 @@
     outline: none;
 }
 
-.homePageDropZone {
+.homepageDropZone {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     flex-wrap: wrap;
-    width: 70%;
-    border: 1px solid black;
+    width: 100%;
 }
 
 .biz-component {
     border: 1px solid red;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     height: 300px;
     width: 300px;
     position: relative;
+    margin: 30px 30px;
 }
 
 .biz-title {
@@ -301,7 +307,6 @@
     width: 300px;
     object-fit: cover;
 }
-
 
 
 
