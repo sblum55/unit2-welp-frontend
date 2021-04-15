@@ -1,13 +1,69 @@
 console.log("Hello there");
 
-const homepage = document.querySelector('.homepage')
+const url = 'http://localhost:3001/'
 
+const homepage = document.querySelector('.homepage')
+const loginForm = document.querySelector('.loginForm')
+const signUpForm = document.querySelector('.signUpForm')
+
+const signOut = document.querySelector('.signOut')
+
+
+// Sign Up Form
 document.querySelector('.signUp').addEventListener('click', () => {
     triggerModal('signUpModal', 0)
 })
 
+signUpForm.addEventListener('submit', async (event) => {
+    const name = document.querySelector('.signUpName').value
+    const email = document.querySelector('.signUpEmail').value
+    const password = document.querySelector('.signUpPassword').value
+
+    try {
+        const response = await axios.post(`${url}users`, {
+            name: name,
+            email: email,
+            password: password
+        })
+
+        console.log('line 25', response);
+
+        const userId = response.data.user.id
+        localStorage.setItem('userId', userId)
+
+    }catch (error) {
+        alert('user already exist')
+    }
+})
+
+// Login Form
 document.querySelector('.login').addEventListener('click', () => {
     triggerModal('loginModal', 1)
+})
+
+loginForm.addEventListener('submit', async (event) => {
+    const name = document.querySelector('.loginName').value
+    const email = document.querySelector('.loginEmail').value
+    const password = document.querySelector(',loginPassword').value
+
+    try {
+        const response = await axios.post(`${url}users/login`, {
+            name: name,
+            email: email,
+            password: password
+        })
+
+        const userId = response.data.user.id
+        localStorage.setItem('userId', userId)
+
+    }catch (error) {
+        alert('login failed')
+    }
+})
+
+signOut.addEventListener('click', () => {
+    console.log('you logged out');
+    localStorage.removeItem('userId')
 })
 
 document.querySelector('.addBiz').addEventListener('click', () => {
