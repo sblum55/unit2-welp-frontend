@@ -58,7 +58,6 @@ h1 {
 .hLink {
     outline: none;
     border: 1px solid white;
-    outline: none;
     margin-right: 15px;
     width: 25%;
     height: 34%;
@@ -185,21 +184,24 @@ h1 {
 
 .sUI:focus {
     outline-width: thick;
-    outline-color: lightskyblue;
+    outline-color: #33658a;
 }
 
 .signUpBtn {
     margin-top: 30px;
     width: 25%;
     height: 40px;
-    background-color: lightskyblue;
+    background-color: #33658a;
     font-size: large;
+    color: white;
+    border-radius: 10px;
+    outline: none;
 }
 
 .signUpBtn:hover {
-    color: lightskyblue;
+    color: #33658a;
     background-color: white;
-    border-color: lightskyblue;
+    border-color: #33658a;
     cursor: pointer;
 }
 
@@ -209,16 +211,19 @@ h1 {
 
 .loginBtn {
     margin-top: 30px;
+    border-radius: 10px;
     width: 25%;
+    outline: none;
     height: 40px;
-    background-color: lightskyblue;
+    background-color: #33658a;
     font-size: large;
+    color: white;
 }
 
 .loginBtn:hover {
-    color: lightskyblue;
+    color: #33658a;
     background-color: white;
-    border-color: lightskyblue;
+    border-color: #33658a;
     cursor: pointer;
 }
 
@@ -245,7 +250,7 @@ h1 {
     padding: 20px;
     border: 1px solid #888;
     width: 30%; /* Modal Size */
-    border-radius: 10%;
+    border-radius: 10px;
     height: 50%;
     padding: 0%;
 }
@@ -386,12 +391,12 @@ h1 {
     padding: 20px;
     border: 1px solid #888;
     width: 40%; /* Modal Size */
-    border-radius: 10%;
+    border-radius: 10px;
     height: 50%;
     padding: 0%;
 }
 
-.businessContainer {
+.businessContainer, .reviewContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -482,7 +487,11 @@ h1 {
     align-items: flex-start;
     margin-top: 25px;
     width: 60%;
-    background-color: rgb(192, 178, 161);
+    background-color: #4b4a67;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 5px 5px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 .headline-container {
@@ -490,16 +499,49 @@ h1 {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    border-bottom: 1px solid white;
+}
+
+.userName {
+    margin-bottom: 15px;
 }
 
 .rating {
-    width: 10%;
+    width: 5%;
 }
 
 .headline {
-    width: 90%;
+    width: 95%;
     font-weight: bold;
     font-size: 20px;
+    margin-bottom: 2px;
+}
+
+.reviewTitle {
+    text-align: center;
+}
+
+.content {
+    margin-top: 20px;
+}
+
+.reviewForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.reviewForm input {
+    margin-bottom: 10px;
+    display: flex;
+    width:70%;
+    height: 30px;
+    justify-content: center;
+}
+
+.submitReviewBtn:hover {
+    cursor: pointer;
 }
 
 
