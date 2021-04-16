@@ -391,6 +391,13 @@ h1 {
     padding: 0%;
 }
 
+.businessContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
 .bizTitleContainer {
     text-align: center;
     margin: 30px;
@@ -472,12 +479,25 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     margin-top: 25px;
+    width: 60%;
     background-color: rgb(192, 178, 161);
 }
 
+.headline-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.rating {
+    width: 10%;
+}
+
 .headline {
+    width: 90%;
     font-weight: bold;
     font-size: 20px;
 }

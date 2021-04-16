@@ -283,15 +283,15 @@ const singleBusiness = async (response) => {
         headlineContainer.classList.add('headline-container')
         bizReviewContainer.appendChild(headlineContainer)
 
-        let headline = document.createElement('p')
-        headline.classList.add('headline')
-        headline.innerText = element.headline
-        headlineContainer.appendChild(headline)
-
         let rating = document.createElement('p')
         rating.classList.add('rating')
         rating.innerText = element.rating
         headlineContainer.appendChild(rating)
+
+        let headline = document.createElement('p')
+        headline.classList.add('headline')
+        headline.innerText = element.headline
+        headlineContainer.appendChild(headline)
     
         let content = document.createElement('p')
         content.classList.add('content')
