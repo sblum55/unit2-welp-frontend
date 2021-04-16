@@ -277,6 +277,12 @@ const singleBusiness = async (response) => {
         console.log(element.userId);
 
         console.log(user);
+
+        let headline = document.createElement('p')
+        headline.classList.add('headline')
+        headline.innerText = element.headline
+        bizReviewContainer.appendChild(headline)
+
         let userName = document.createElement('p')
         userName.classList.add('userName')
         userName.innerText = user.data.user.name
@@ -286,11 +292,6 @@ const singleBusiness = async (response) => {
         rating.classList.add('rating')
         rating.innerText = element.rating
         bizReviewContainer.appendChild(rating)
-    
-        let headline = document.createElement('p')
-        headline.classList.add('headline')
-        headline.innerText = element.headline
-        bizReviewContainer.appendChild(headline)
     
         let content = document.createElement('p')
         content.classList.add('content')
