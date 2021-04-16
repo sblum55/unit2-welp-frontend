@@ -349,12 +349,34 @@
     padding: 0%;
 }
 
+.bizTitleContainer {
+    text-align: center;
+    margin: 30px;
+}
+
+.bizTitle {
+    font-size: 80px;
+}
+
+.bizOwnerName {
+    font-size: 50px;
+}
+
 .bizMiddleContainer {
     display: flex;
     flex-direction: row;
+    margin: 50px
 }
 .bizImageContainer {
+    display: flex;
+    justify-content: center;
     width: 50%;
+}
+
+.bizImage {
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    margin-left: 20px;
+    width: 75%;
 }
 
 .bizDetailContainer {
@@ -368,14 +390,6 @@
 .bizAddress {
     margin-bottom: 30px;
     font-size: xx-large;
-}
-
-.bizTitleContainer {
-    text-align: center;
-}
-
-.bizTitle {
-    font-size: 80px;
 }
 
 .bizType {
@@ -396,6 +410,14 @@
     margin-top: 25px;
     background-color: rgb(192, 178, 161);
 }
+
+.headline {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+
 
 .hidden {
     display: none;
