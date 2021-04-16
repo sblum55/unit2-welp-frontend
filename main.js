@@ -2,6 +2,7 @@ console.log("Hello there");
 
 const url = 'http://localhost:3001/'
 
+const reviewContainer = document.querySelector('.reviewContainer')
 const homepage = document.querySelector('.homepage')
 const loginForm = document.querySelector('.loginForm')
 const loginButton = document.querySelector('.login')
@@ -241,64 +242,82 @@ const singleBusiness = async (response) => {
             triggerModal('reviewModal', 3)
         })
 
-        document.querySelector('.submitReviewBtn').addEventListener('click', async () => {
-            const rating = document.querySelector('.reviewRatingInput').value
+        document.querySelector('.reviewForm').addEventListener('submit', async e => {
+            e.preventDefault()
+            const modal = document.querySelector('.reviewModal')
+            const rating = document.querySelector('.reviewRatingInput')
+            const ratingValue = document.querySelector('.reviewRatingInput').value
             const headline = document.querySelector('.reviewHeadline').value
             const review = document.querySelector('.reviewText').value
-
-            const reviewPost = await axios.post(`${url}users/${localStorage.getItem('userId')}/addReview`, {
-                id: response.id,
-                rating: rating,
-                headline: headline,
-                content: review
-            })
-            console.log(reviewPost);
+            
+            if (rating.value <= 5 && rating.value >= 0) {
+                const reviewPost = await axios.post(`${url}users/${localStorage.getItem('userId')}/addReview`, {
+                    id: response.id,
+                    rating: ratingValue,
+                    headline: headline,
+                    content: review
+                })
+                console.log(reviewPost);
+                modal.style.display = "none"
+                getAllReviews(response.id)
+            } else {
+                rating.setCustomValidity('Rating must be between 0 and 5.')
+            }
         })
     }
+    getAllReviews(response.id)
+}
 
-    const res = await axios.post(`${url}business/reviews`, {
-        businessId: response.id,
-        userId: localStorage.getItem('userId')
-    })
-    console.log(res);
-    //Review Info
-    res.data.slice().reverse().forEach(async element => {
+const getAllReviews = async bizId => {
+    
+    while(reviewContainer.firstChild) {
+            //document.querySelector('.businessContainer').removeChild(bizReviewContainer.firstChild)
+            reviewContainer.firstChild.remove()
+        }
+        
+        const res = await axios.post(`${url}business/reviews`, {
+            businessId: bizId,
+            userId: localStorage.getItem('userId')
+        })
+        console.log(res);
+        //Review Info
+        res.data.slice().reverse().forEach(async element => {
         let bizReviewContainer = document.createElement('div')
         bizReviewContainer.classList.add('bizReviewContainer')
-        businessContainer.appendChild(bizReviewContainer)
+        reviewContainer.appendChild(bizReviewContainer)
         
         const user = await axios.post(`${url}users/getUser`, {
             userId: element.userId
         })
         console.log(element.userId);
-
+        
         console.log(user);
-
+        
         let userName = document.createElement('p')
         userName.classList.add('userName')
         userName.innerText = user.data.user.name
         bizReviewContainer.appendChild(userName)
-
+        
         let headlineContainer = document.createElement('div')
         headlineContainer.classList.add('headline-container')
         bizReviewContainer.appendChild(headlineContainer)
-
+        
         let rating = document.createElement('p')
         rating.classList.add('rating')
         rating.innerText = element.rating
         headlineContainer.appendChild(rating)
-
+        
         let headline = document.createElement('p')
         headline.classList.add('headline')
         headline.innerText = element.headline
         headlineContainer.appendChild(headline)
-    
+        
         let content = document.createElement('p')
         content.classList.add('content')
         content.innerText = element.content
         bizReviewContainer.appendChild(content)
     })
-
+    
 }
 
 

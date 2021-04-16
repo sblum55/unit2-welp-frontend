@@ -40,6 +40,9 @@
         <div class="businessContainer">
 
         </div>
+        <div class='reviewContainer'>
+
+        </div>
     </div>
     <!-- Signup Modal-->
     <div class='signUpModal'>
@@ -98,10 +101,12 @@
         <div class='reviewModalContent'>
             <span class='close'>&times;</span>
             <h1 class='reviewTitle'>Leave Review</h1>
-            <input class='reviewRatingInput' type='number' placeholder="Rating">
-            <input class='reviewHeadline' type='text' placeholder="Headline">
-            <textarea class='reviewText' cols="50" rows="4"></textarea>
-            <button class='submitReviewBtn'>SUBMIT</button>
+            <form class='reviewForm'>
+                <input class='reviewRatingInput' type='number' placeholder="Rating" min='0' max='5' required>
+                <input class='reviewHeadline' type='text' placeholder="Headline" required>
+                <input class='reviewText' type='text' placeholder="Comments" required>
+                <input class='submitReviewBtn' type='submit' value='SUBMIT'>
+            </form>
         </div>
     </div>
 </body>
