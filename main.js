@@ -15,12 +15,16 @@ const bizAddressInput = document.querySelector('.addBizAddress')
 const bizDescriptionInput = document.querySelector('.addBizDescription')
 const bizImageInput = document.querySelector('.addBizImage')
 const bizTypeInput = document.querySelector('.addBizType')
-const buttonTestGetAll = document.querySelector('#testGetAll')
 const homePageDropZone = document.querySelector('.homepageDropZone')
 const businessContainer = document.querySelector('.businessContainer')
+const gitBizLogo = document.querySelector('.gitBiz')
 
 let allBiz = []
 
+
+gitBizLogo.addEventListener('click', () => {
+    location.reload()
+})
 
 // Reusable Functions
 
@@ -118,14 +122,6 @@ bizForm.addEventListener('submit', async (event) => {
     }
 
 })
-
-
-// Home page - get all businesses
-buttonTestGetAll.addEventListener('click', () => {
-    homeAllBiz()
-})
-
-
 
 const homeAllBiz = async () => {
     try {
@@ -227,7 +223,7 @@ const singleBusiness = async (response) => {
     let bizType = document.createElement('p')
     bizType.classList.add('bizType')
     bizType.innerText = response.type
-    bizDetailContainer.appendChild(bizType)
+    bizImageContainer.appendChild(bizType)
 
     let bizDescription = document.createElement('p')
     bizDescription.classList.add('bizDescription')
@@ -242,7 +238,7 @@ const singleBusiness = async (response) => {
         businessContainer.appendChild(reviewBtn)
 
         reviewBtn.addEventListener('click', () => {
-            triggerModal('reviewModal', 4)
+            triggerModal('reviewModal', 3)
         })
 
         document.querySelector('.submitReviewBtn').addEventListener('click', async () => {
@@ -278,20 +274,24 @@ const singleBusiness = async (response) => {
 
         console.log(user);
 
-        let headline = document.createElement('p')
-        headline.classList.add('headline')
-        headline.innerText = element.headline
-        bizReviewContainer.appendChild(headline)
-
         let userName = document.createElement('p')
         userName.classList.add('userName')
         userName.innerText = user.data.user.name
         bizReviewContainer.appendChild(userName)
 
+        let headlineContainer = document.createElement('div')
+        headlineContainer.classList.add('headline-container')
+        bizReviewContainer.appendChild(headlineContainer)
+
         let rating = document.createElement('p')
         rating.classList.add('rating')
         rating.innerText = element.rating
-        bizReviewContainer.appendChild(rating)
+        headlineContainer.appendChild(rating)
+
+        let headline = document.createElement('p')
+        headline.classList.add('headline')
+        headline.innerText = element.headline
+        headlineContainer.appendChild(headline)
     
         let content = document.createElement('p')
         content.classList.add('content')
