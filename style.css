@@ -540,6 +540,23 @@ h1 {
     justify-content: center;
 }
 
+.reviewBtn {
+    outline: none;
+    border: 1px solid white;
+    padding: 10px;
+    background-color: #4b4a67;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1em;
+    border-radius: 20px;
+    border: 1px solid #4b4a67;
+}
+.reviewBtn:hover {
+    cursor: pointer;
+    background-color: white;
+    color: #4b4a67;
+}
+
 .submitReviewBtn:hover {
     cursor: pointer;
 }

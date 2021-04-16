@@ -55,7 +55,8 @@ signUpForm.addEventListener('submit', async (event) => {
 
         console.log('line 25', response);
 
-        const userId = response.data.user.id
+        const userId = response.data.userId
+
         localStorage.setItem('userId', userId)
         location.reload()
 
@@ -81,7 +82,8 @@ loginForm.addEventListener('submit', async (event) => {
         })
 
         //LOGIN HAS TO HAVE SUCCEDDED SO RUN THIS
-        const userId = response.data.user.id
+        const userId = response.data.userId
+        console.log(userId)
         localStorage.setItem('userId', userId)
 
         modal.style.display = 'none'
@@ -192,7 +194,7 @@ const singleBusiness = async (response) => {
     bizTitle.classList.add('bizTitle')
     bizTitle.innerText = response.name
     bizTitleContainer.appendChild(bizTitle)
-    
+
     const bizOwner = await axios.post(`${url}users/getUser`, {
         userId: response.userId
     })
@@ -277,7 +279,7 @@ const getAllReviews = async bizId => {
         
         const res = await axios.post(`${url}business/reviews`, {
             businessId: bizId,
-            userId: localStorage.getItem('userId')
+
         })
         console.log(res);
         //Review Info
